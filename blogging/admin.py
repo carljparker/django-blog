@@ -1,7 +1,10 @@
-# Register your models here.
 from django.contrib import admin
 from blogging.models import Post, Category
 
-# and a new admin registration
+# Admin registrations
 admin.site.register(Post)
-admin.site.register(Category)
+
+@admin.register(Category)
+class CategoryAdmin( admin.ModelAdmin ):
+    fields  = ( 'name', 'description' )
+
