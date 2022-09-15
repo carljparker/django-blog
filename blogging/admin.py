@@ -8,11 +8,10 @@ from blogging.models import Post, Category
 class CategoriesInline(admin.TabularInline):
     model = Category.posts.through
 
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     fields = ("name", "description")
 
+@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     inlines = [CategoriesInline]
-
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Post, PostAdmin)
