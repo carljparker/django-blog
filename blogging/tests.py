@@ -26,7 +26,7 @@ class FrontEndTestCase(TestCase):
             post.save()
 
     def test_list_only_published(self):
-        resp = self.client.get('/')
+        resp = self.client.get("/")
         #
         # The rendered response is a bytestring
         #
@@ -43,12 +43,13 @@ class FrontEndTestCase(TestCase):
         for count in range(1, 11):
             title = "Post %d Title" % count
             post = Post.objects.get(title=title)
-            resp = self.client.get('/posts/%d/' % post.pk)
+            resp = self.client.get("/posts/%d/" % post.pk)
             if count < 6:
                 self.assertEqual(resp.status_code, 200)
                 self.assertContains(resp, title)
             else:
                 self.assertEqual(resp.status_code, 404)
+
 
 class PostTestCase(TestCase):
     fixtures = [
