@@ -31,7 +31,7 @@ class FrontEndTestCase(TestCase):
         # The rendered response is a bytestring
         #
         resp_text = resp.content.decode(resp.charset)
-        self.assertTrue("New Posts" in resp_text)
+        self.assertTrue("Newest Posts" in resp_text)
         for count in range(1, 11):
             title = "Post %d Title" % count
             if count < 6:
